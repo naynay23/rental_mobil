@@ -25,4 +25,9 @@
  	</tr>
  	@endforeach
 </table>
+<center>
+	<div class="col-md-6">
+		{!! $data->render() !!}
+	</div>
+</center>
 @endsection

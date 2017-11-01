@@ -21,4 +21,10 @@
  	</tr>
  	@endforeach
 </table>
+<center>
+	<div class="col-md-6">
+		{!! $merk->render() !!}
+	</div>
+</center>
+
 @endsection

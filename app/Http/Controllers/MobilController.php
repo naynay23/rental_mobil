@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
@@ -11,7 +12,7 @@ use App\Merk;
 class MobilController extends Controller
 {
     function index(){
-    	$mobil = Mobil::get();
+    	$mobil = Mobil::paginate(5);
     	return view('mobil.index', ['mobil' => $mobil]);
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
@@ -11,7 +12,7 @@ use App\Merk;
 class MerkController extends Controller
 {
     function index(){
-    	$merk = Merk::all();
+    	$merk = DB::table('tbl_merk')->paginate(5);
     	return view('merk.index', ['merk' => $merk]);
     }
 

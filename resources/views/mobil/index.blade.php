@@ -27,4 +27,9 @@
  	</tr>
  	@endforeach
 </table>
+<center>
+	<div class="col-md-6">
+		{!! $mobil->render() !!}
+	</div>
+</center>
 @endsection

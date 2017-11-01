@@ -31,4 +31,9 @@
  	</tr>
  	@endforeach
 </table>
+<center>
+	<div class="col-md-6">
+		{!! $transaksi->render() !!}
+	</div>
+</center>
 @endsection

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
@@ -15,7 +16,7 @@ class TransaksiController extends Controller
 {
     //
     function index(){
-    	$transaksi = Transaksi::all();
+    	$transaksi = Transaksi::paginate();
     	return view('transaksi.index', ['transaksi'=>$transaksi]);
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
@@ -11,7 +12,7 @@ use App\Karyawan;
 class KaryawanController extends Controller
 {
 	function index(){
-		$data = Karyawan::all();
+		$data = DB::table('tbl_karyawan')->paginate(5);
 		return view('karyawan.index', ['data'=>$data]);
 	}
 
