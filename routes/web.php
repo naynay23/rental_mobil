@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('auth.login');
 });
 
 Route::get('merk', 'MerkController@index');
@@ -45,3 +45,6 @@ Route::get('mobil/delete/{id}', 'MobilController@delete');
 Route::get('pelanggan/delete/{id}', 'PelangganController@delete');
 Route::get('karyawan/delete/{id}', 'KaryawanController@delete');
 Route::get('transaksi/delete/{id}', 'TransaksiController@delete');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
