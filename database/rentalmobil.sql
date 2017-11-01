@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 01 Nov 2017 pada 13.03
+-- Generation Time: 01 Nov 2017 pada 14.45
 -- Versi Server: 10.1.10-MariaDB
 -- PHP Version: 5.6.19
 
@@ -19,6 +19,18 @@ SET time_zone = "+00:00";
 --
 -- Database: `rentalmobil`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -60,7 +72,8 @@ INSERT INTO `tbl_merk` (`id_merk`, `nama_merk`) VALUES
 (2, 'Daihatsu'),
 (3, 'Honda'),
 (8, 'Ford'),
-(9, 'Nissan');
+(9, 'Nissan'),
+(10, 'Mitsubitshi');
 
 -- --------------------------------------------------------
 
@@ -82,7 +95,11 @@ CREATE TABLE `tbl_mobil` (
 
 INSERT INTO `tbl_mobil` (`id_mobil`, `plat_nomor`, `jenis_mobil`, `id_merk`, `warna`) VALUES
 (1, 'L 23 NA', 'Avanza Veloz', 2, 'Hitam'),
-(3, 'M 7462 DA', 'Kijang Inova', 1, 'Hitam');
+(3, 'M 7462 DA', 'Kijang Inova', 1, 'Hitam'),
+(4, 'S 44 YA', 'Juke', 9, 'Merah'),
+(5, 'M 4123 HH', 'Kijang Inova', 1, 'Putih'),
+(6, 'N 441 LA', 'Xenia', 2, 'Hitam'),
+(7, 'L 441 NN', 'Mobilo', 3, 'Hitam');
 
 -- --------------------------------------------------------
 
@@ -128,9 +145,38 @@ CREATE TABLE `tbl_transaksi` (
 INSERT INTO `tbl_transaksi` (`id_transaksi`, `id_karyawan`, `id_pelanggan`, `id_mobil`, `tanggal_pinjam`, `tanggal_kembali`, `tarif_sewa`) VALUES
 (1, 1, 1, 1, '2017-10-28', '2017-10-29', 300000);
 
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Nayla', 'nayla.aisyah4@gmail.com', '$2y$10$GQVGsZv.LBFVEDkZF1VInOSrKUFJIckaZirP6oumtqK1TpVTGNzvW', 't5xqJRbzZjK1sDqg2GHHf1JedwnHALt3VISQsRwMVx9KGhFRK0hmhwz39JeQ', '2017-11-01 05:15:21', '2017-11-01 05:15:21');
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tbl_karyawan`
@@ -167,9 +213,20 @@ ALTER TABLE `tbl_transaksi`
   ADD KEY `id_mobil` (`id_mobil`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
+--
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tbl_karyawan`
 --
@@ -179,12 +236,12 @@ ALTER TABLE `tbl_karyawan`
 -- AUTO_INCREMENT for table `tbl_merk`
 --
 ALTER TABLE `tbl_merk`
-  MODIFY `id_merk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_merk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `tbl_mobil`
 --
 ALTER TABLE `tbl_mobil`
-  MODIFY `id_mobil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_mobil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `tbl_pelanggan`
 --
@@ -195,6 +252,11 @@ ALTER TABLE `tbl_pelanggan`
 --
 ALTER TABLE `tbl_transaksi`
   MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
